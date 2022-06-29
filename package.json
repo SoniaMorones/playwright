@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "login": "playwright test --project=firefox" 
+    "login": "playwright test --headed --project=firefox" 
   },
   "keywords": [],
   "author": "",
