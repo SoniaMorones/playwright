@@ -1,19 +1,19 @@
 const {test, expect} = require('@playwright/test');
 
-const correo_parte1 = ["sonia"];
-const correo_parte2= ['@chilliapps.com'];
-var contador= 0;
+//const correo_parte1 = ["sonia"];
+//const correo_parte2= ['@chilliapps.com'];
+//var contador= 0;
 
-const nombre_parte1 = ["sonia"];
+//const nombre_parte1 = ["sonia"];
  
 
 
     test('Correo1', async ({page})  => {
      
-      for (var a=0; a==5; a++) {
-            contador = contador + 15;
-            correoFinal = correo_parte1+contador+correo_parte2; 
-            nombreFinal = nombre_parte1+contador; 
+  //    for (var a=0; a==5; a++) {
+    //        contador = contador + 15;
+      //      correoFinal = correo_parte1+contador+correo_parte2; 
+        //    nombreFinal = nombre_parte1+contador; 
 
         await page.goto('https://hardtek.myshopify.com/collections/speakers/products/5-satellite-speakers-system')
         await page.locator('button:has-text("Add to Cart")').click();
@@ -24,11 +24,11 @@ const nombre_parte1 = ["sonia"];
         await page.locator('button:has-text("Checkout")').click();
 
         /************ AGREGAR DATOS*******************************/
-        await expect(page.locator('logo__text heading-1')).toHaveText('hardjjtek');
-        await page.locator('[placeholder="Email or mobile phone number"]').fill(correoFinal);
+     //   await expect(page.locator('logo__text heading-1')).toHaveText('hardjjtek');
+        await page.locator('[placeholder="Email or mobile phone number"]').fill('sonia77@chilliapps.com');
   
         await page.locator('text=Email me with news and offers We’ll send you an order receipt and recurring ship >> input[type="checkbox"]').check();
-        await page.locator('[placeholder="First name \\(optional\\)"]').fill(nombreFinal);
+        await page.locator('[placeholder="First name \\(optional\\)"]').fill('nombreFinal');
      
         await page.locator('[placeholder="Last name"]').fill('Last Nombre');
         await page.locator('[placeholder="Street and house number"]').fill('Calle ');
@@ -36,17 +36,17 @@ const nombre_parte1 = ["sonia"];
         await page.locator('[placeholder="City"]').fill('Zapopan');
         await page.locator('select[name="checkout\\[shipping_address\\]\\[province\\]"]').selectOption('JAL');
         await page.locator('button:has-text("Continue to shipping")').click();
-
+        test.setTimeout(1200000); 
         //*********CONTINUAR COMPRA*****************/
         await page.locator('button:has-text("Continue to payment")').click();
-       
+        test.setTimeout(1200000); 
 
         //-------Terminar Compra---------------/
         await page.locator('#checkout_payment_gateway_66737995887').check();  //Clic en pagar con deposito
         test.setTimeout(80000);
         await page.locator('button:has-text("Complete order")').first().click(); // Clic en terminar compra
         test.setTimeout(1200000);            
-     } 
+    // } 
     
   });
 
